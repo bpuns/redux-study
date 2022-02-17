@@ -1,0 +1,13 @@
+{
+  "name": "redux-study",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "2.7.3",
+    "@typescript-eslint/parser": "4.15.2",
+    "eslint": "7.20.0"
+  }
+}
