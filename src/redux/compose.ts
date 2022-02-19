@@ -45,7 +45,6 @@ export default function compose<R>(...funcs: Function[]): (...args: any[]) => R
 
 export default function compose(...funcs: Function[]) {
   if (funcs.length === 0) {
-    // infer the argument type so it is usable in inference down the line
     return <T>(arg: T) => arg
   }
 
@@ -53,9 +52,10 @@ export default function compose(...funcs: Function[]) {
     return funcs[0]
   }
 
-  return funcs.reduce(
-    (a, b) =>
-      (...args: any) =>
-        a(b(...args))
-  )
+  return funcs.reduce((a, b) => {
+    return (...args: any) => {
+      return a(b(...args))
+    }
+  })
+
 }

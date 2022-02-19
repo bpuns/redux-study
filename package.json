@@ -6,8 +6,11 @@
     "build": "vite build"
   },
   "devDependencies": {
-    "vite": "2.7.3",
     "@typescript-eslint/parser": "4.15.2",
-    "eslint": "7.20.0"
+    "eslint": "7.20.0",
+    "vite": "2.7.3"
+  },
+  "dependencies": {
+    "mobx": "^6.3.13"
   }
 }

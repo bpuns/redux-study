@@ -65,7 +65,9 @@ export default function applyMiddleware(
       reducer: Reducer<S, A>,
       preloadedState?: PreloadedState<S>
     ) => {
+
       const store = createStore(reducer, preloadedState)
+      
       let dispatch: Dispatch = () => {
         throw new Error(
           'Dispatching while constructing your middleware is not allowed. ' +
@@ -75,9 +77,11 @@ export default function applyMiddleware(
 
       const middlewareAPI: MiddlewareAPI = {
         getState: store.getState,
-        dispatch: (action, ...args) => dispatch(action, ...args)
+        dispatch
       }
+
       const chain = middlewares.map(middleware => middleware(middlewareAPI))
+
       dispatch = compose<typeof dispatch>(...chain)(store.dispatch)
 
       return {
